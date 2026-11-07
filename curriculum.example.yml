@@ -1,0 +1,63 @@
+name: Nome Cognome
+title: Titolo
+subtitle: Sottotitolo
+
+contacts:
+  email: nome.cognome@example.com
+  phone: 000 000 0000
+  location: Città
+  links:
+    github: https://github.com/nome-cognome
+    linkedin: https://www.linkedin.com/in/nome-cognome/
+
+summary: >
+  Profilo con **parole in grassetto**.
+  Seconda frase del profilo.
+
+experience:
+  - role: Ruolo
+    company: Azienda
+    location: Città
+    period: 2020 - oggi
+    highlights:
+        - "**Attività** con descrizione dell'attività."
+        - "**Attività** con descrizione dell'attività."
+        - "**Attività** con descrizione dell'attività."
+  - role: Ruolo
+    company: Azienda
+    location: Città
+    period: 2015 - 2020
+    description: Descrizione del ruolo con **parole in grassetto**.
+
+education:
+  - qualification: Titolo di studio
+    institution: Istituto
+    location: Città
+    period: 2015
+    description: Descrizione del titolo di studio.
+  - qualification: Titolo di studio
+    institution: Istituto
+    location: Città
+
+skills:
+  - area: Area
+    items:
+      - label: Etichetta
+        value: Valore, valore, valore
+      - label: Etichetta
+        value: Valore, valore, valore
+  - area: Area
+    items:
+      - Competenza
+      - competenza
+      - competenza
+
+languages:
+  - name: Lingua
+    level: Livello
+  - name: Lingua
+    level: Livello
+
+interests:
+  - "**Interesse**: descrizione dell'interesse."
+  - "**Interesse**: descrizione dell'interesse."

@@ -1,0 +1,49 @@
+@use 'variables' as *;
+
+aside {
+    border-left: $line;
+
+    padding-left: $space-xl;
+}
+
+.skill {
+    & + .skill {
+        margin-top: $space-m;
+    }
+
+    .area {
+        font-weight: 600;
+
+        margin-bottom: $space-s;
+    }
+
+    dl.items {
+        display: grid;
+
+        font-size: $text-s;
+
+        gap: $space-s;
+
+        dt {
+            font-weight: 600;
+
+            letter-spacing: 0.02em;
+
+            margin-bottom: $space-s;
+
+            text-transform: uppercase;
+        }
+    }
+
+    ul.items {
+        font-size: $text-s;
+
+        li {
+            display: inline;
+
+            &:not(:last-child)::after {
+                content: ", ";
+            }
+        }
+    }
+}

@@ -1,0 +1,37 @@
+@use 'variables' as *;
+
+.curriculum {
+    background-color: $paper;
+
+    border: $line;
+
+    display: flex;
+
+    flex-direction: column;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    min-height: $page-height;
+
+    padding-bottom: $page-margin-y;
+    padding-left: $page-margin-x;
+    padding-right: $page-margin-x;
+    padding-top: $page-margin-y;
+
+    width: $page-width;
+
+    .content {
+        border-top: $line;
+
+        column-gap: $space-xl;
+
+        display: grid;
+
+        grid-template-columns: minmax(0, 9fr) minmax(0, 4fr);
+
+        margin-top: $space-l;
+
+        padding-top: $space-l;
+    }
+}

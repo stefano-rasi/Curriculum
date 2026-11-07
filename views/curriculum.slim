@@ -1,0 +1,119 @@
+html lang="it"
+  head
+    title Curriculum
+
+    link rel="stylesheet" href="/curriculum.css"
+
+    script src="/curriculum.js" defer=true
+
+  body
+    .curriculum
+      header
+        - if @curriculum['photo']
+          img.photo src="/#{@curriculum['photo']}" width="548" height="400" alt=@curriculum['name'] 
+
+        .identity
+          h1.name = @curriculum['name']
+          p.title = @curriculum['title']
+          - if @curriculum['subtitle']
+            p.subtitle = @curriculum['subtitle']
+
+        - if @curriculum['contacts']
+          address.contacts
+            ul
+              - if @curriculum['contacts']['location']
+                li.contact.location
+                  = @curriculum['contacts']['location']
+              - if @curriculum['contacts']['phone']
+                li.contact.phone: a href="tel:#{@curriculum['contacts']['phone'].to_s.delete(' ')}"
+                  = @curriculum['contacts']['phone']
+              - if @curriculum['contacts']['email']
+                li.contact.email: a href="mailto:#{@curriculum['contacts']['email']}"
+                  = @curriculum['contacts']['email']
+            - if @curriculum['contacts']['links']
+              ul
+                - @curriculum['contacts']['links'].each do |key, url|
+                  - if url
+                    li.contact class="#{key}": a href=url
+                      = url.chomp('/').split('/').last.sub(/\A\d+-/, '')
+
+      .content
+        main
+          - if @curriculum['summary']
+            section
+              p.summary == asciidoc(@curriculum['summary'])
+
+          - if @curriculum['experience']
+            section
+              h2.section-title Esperienza
+              - @curriculum['experience'].each do |experience|
+                article.entry
+                  .entry-header
+                    h3.role = experience['role']
+                    - if experience['period']
+                      p.period = experience['period']
+                  - if experience['company']
+                    p.company
+                      => experience['company']
+                      - if experience['location']
+                        | (#{experience['location']})
+                  - if experience['description']
+                    p.description == asciidoc(experience['description'])
+                  - if experience['highlights']
+                    ul.highlights
+                      - experience['highlights'].each do |highlight|
+                        li == asciidoc(highlight)
+
+          - if @curriculum['education']
+            section
+              h2.section-title Formazione
+              - @curriculum['education'].each do |education|
+                article.entry.compact
+                  .entry-header
+                    h3.qualification = education['qualification']
+                    - if education['period']
+                      p.period = education['period']
+                  - if education['institution']
+                    p.institution
+                      => education['institution']
+                      - if education['location']
+                        | (#{education['location']})
+                  - if education['description']
+                    p.description == asciidoc(education['description'])
+
+          - if @curriculum['languages']
+            section
+              h2.section-title Lingue
+              dl.languages
+                - @curriculum['languages'].each do |language|
+                  div
+                    dt = language['name']
+                    dd = language['level']
+
+          - if @curriculum['interests']
+            section
+              h2.section-title Interessi
+              ul.interests
+                - @curriculum['interests'].each do |interest|
+                  li == asciidoc(interest)
+
+        aside
+          - if @curriculum['skills']
+            section
+              h2.section-title Competenze
+              - @curriculum['skills'].each do |skill|
+                .skill
+                  h3.area = skill['area']
+                  - if skill['items'].all?(Hash)
+                    dl.items
+                      - skill['items'].each do |item|
+                        div
+                          dt.label = item['label']
+                          dd.value = item['value']
+                  - else
+                    ul.items
+                      - skill['items'].each do |item|
+                        li = item
+
+      footer
+        p.consent Autorizzo il trattamento dei dati personali contenuti nel curriculum vitae ai sensi del D.Lgs. 196/2003 e del Regolamento UE 2016/679 (GDPR).

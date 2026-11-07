@@ -1,0 +1,36 @@
+@use 'variables' as *;
+
+@media print {
+    @page {
+        margin-bottom: $page-margin-y;
+        margin-left: $page-margin-x;
+        margin-right: $page-margin-x;
+        margin-top: $page-margin-y;
+
+        size: A4;
+    }
+
+    body {
+        background-color: transparent;
+
+        print-color-adjust: exact;
+    }
+
+    .curriculum {
+        border-width: 0;
+
+        min-height: $page-height - $page-margin-y * 2;
+
+        padding: 0;
+
+        width: auto;
+    }
+
+    .section-title {
+        break-after: avoid;
+    }
+
+    .entry, .languages div, .skill, footer {
+        break-inside: avoid;
+    }
+}

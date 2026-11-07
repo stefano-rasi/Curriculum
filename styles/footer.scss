@@ -1,0 +1,11 @@
+@use 'variables' as *;
+
+footer {
+    margin-top: auto;
+
+    padding-top: $space-l;
+
+    .consent {
+        font-size: $text-xs;
+    }
+}

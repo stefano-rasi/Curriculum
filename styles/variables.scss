@@ -1,0 +1,52 @@
+$background: hsl(0, 0%, 93%);
+
+$font: "Instrument Sans", sans-serif;
+
+$identity-gap: 0.75rem;
+$identity-leading: 1.35rem;
+$identity-row-gap: 0.1rem;
+
+$leading: 1.35;
+
+$line-width: 1pt;
+$line: $line-width solid;
+
+$name-leading: 1.05;
+$name-size: 3rem;
+
+$page-height: 297mm;
+$page-margin-x: 14mm;
+$page-margin-y: 12mm;
+$page-width: 210mm;
+
+$paper: hsl(0, 0%, 100%);
+
+$photo-ratio: 1.37;
+
+$space-s: 0.25rem;
+$space-m: 0.5rem;
+$space-l: 1rem;
+$space-xl: 1.5rem;
+
+$text-xs: 0.75rem;
+$text-s: 0.875rem;
+$text-m: 0.95rem;
+
+$identity-height: $name-size * $name-leading + $identity-gap + $identity-leading * 2 + $identity-row-gap;
+
+@mixin justified {
+    hyphens: auto;
+
+    text-align: justify;
+}
+
+@mixin label {
+    font-size: $text-m;
+    font-weight: 600;
+
+    letter-spacing: 0.06em;
+
+    line-height: $leading;
+
+    text-transform: uppercase;
+}

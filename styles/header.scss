@@ -1,0 +1,113 @@
+@use 'variables' as *;
+
+header {
+    align-items: end;
+
+    display: grid;
+
+    gap: $space-xl;
+
+    grid-template-columns: minmax(0, 1fr) auto;
+
+    &:has(.photo) {
+        grid-template-columns: auto minmax(0, 1fr) auto;
+    }
+
+    .photo {
+        aspect-ratio: $photo-ratio;
+
+        border: $line;
+
+        height: $identity-height;
+
+        object-fit: cover;
+
+        width: auto;
+    }
+
+    .identity {
+        .name {
+            font-size: $name-size;
+            font-weight: 600;
+
+            letter-spacing: -0.025em;
+
+            line-height: $name-leading;
+        }
+
+        .title {
+            @include label;
+
+            line-height: $identity-leading;
+
+            margin-top: $identity-gap;
+        }
+
+        .subtitle {
+            line-height: $identity-leading;
+
+            margin-top: $identity-row-gap;
+        }
+    }
+
+    .contacts {
+        column-gap: $space-m;
+
+        display: flex;
+
+        font-size: $text-s;
+        font-style: normal;
+
+        ul {
+            align-content: start;
+
+            display: grid;
+
+            row-gap: $space-s;
+
+            &:first-child {
+                align-content: end;
+
+                .contact {
+                    flex-direction: row-reverse;
+                }
+            }
+
+            & + ul {
+                border-left: $line;
+
+                padding-left: $space-m;
+            }
+
+            .contact {
+                align-items: center;
+
+                display: flex;
+
+                gap: $space-m;
+
+                &::before {
+                    background-color: currentColor;
+
+                    content: "";
+
+                    flex-shrink: 0;
+
+                    height: 0.95em;
+
+                    mask-position: center;
+                    mask-repeat: no-repeat;
+                    mask-size: contain;
+
+                    width: 0.95em;
+                }
+
+                @each $name in email, github, goodreads, instagram, linkedin, location, phone, youtube {
+                    &.#{$name}::before {
+                        mask-image: url('/icons/#{$name}.svg');
+                    }
+                }
+            }
+        }
+    }
+}

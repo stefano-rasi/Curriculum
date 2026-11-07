@@ -1,0 +1,21 @@
+@use 'variables' as *;
+
+section {
+    & + section {
+        border-top: $line;
+
+        margin-top: $space-l;
+
+        padding-top: $space-l;
+    }
+}
+
+.section-title {
+    @include label;
+
+    margin-bottom: $space-l;
+
+    text-decoration-line: underline;
+    text-decoration-thickness: $line-width;
+    text-underline-offset: 0.35em;
+}
